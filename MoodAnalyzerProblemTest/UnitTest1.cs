@@ -28,5 +28,16 @@ namespace MoodAnalyzerProblemTest
             //Assert
             Assert.AreEqual("HAPPY", result);
         }
+        [TestMethod]
+        public void Given_Null_Should_Return_HAPPY()
+        {
+            //Arrange
+            string message = null;
+            MoodAnalyser moodAnalyser = new MoodAnalyser(message);
+            //Act
+            string result = moodAnalyser.AnalyseMood();
+            //Assert
+            Assert.AreEqual("HAPPY", result);
+        }
     }
 }
