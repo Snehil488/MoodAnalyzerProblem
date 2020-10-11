@@ -28,16 +28,23 @@ namespace MoodAnalyzerProblemTest
             //Assert
             Assert.AreEqual("HAPPY", result);
         }
+        //Removed TC2.1 Given_Null_Should_Return_HAPPY() because now null mood will throw custom exception
         [TestMethod]
-        public void Given_Null_Should_Return_HAPPY()
+        public void Given_Null_Mood_Should_Throw_MoodAnalysisException_Indicating_Null_Mood()
         {
-            //Arrange
-            string message = null;
-            MoodAnalyser moodAnalyser = new MoodAnalyser(message);
-            //Act
-            string result = moodAnalyser.AnalyseMood();
-            //Assert
-            Assert.AreEqual("HAPPY", result);
+            try
+            {
+                //Arrange
+                string message = "I am in happy mood.";
+                MoodAnalyser moodAnalyser = new MoodAnalyser(message);
+                //Act
+                string result = moodAnalyser.AnalyseMood();
+            }
+            catch(MoodAnalysisException e)
+            {
+                //Assert
+                Assert.AreEqual("Mood should not be null.", e.Message);
+            }
         }
     }
 }
