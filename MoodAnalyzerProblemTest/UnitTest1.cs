@@ -35,7 +35,7 @@ namespace MoodAnalyzerProblemTest
             try
             {
                 //Arrange
-                string message = "I am in happy mood.";
+                string message = null;
                 MoodAnalyser moodAnalyser = new MoodAnalyser(message);
                 //Act
                 string result = moodAnalyser.AnalyseMood();
