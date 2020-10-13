@@ -8,6 +8,7 @@ namespace MoodAnalyzerProblem
         {
             MoodAnalyser moodAnalyser = new MoodAnalyser("I am in happy mood.");
             Console.WriteLine(moodAnalyser.AnalyseMood());
+            MoodAnalyserFactory.CreateMoodAnalyserObject("MoodAnalyzerProblem.MoodAnalyser", "MoodAnalyser");
         }
     }
 }
