@@ -164,5 +164,17 @@ namespace MoodAnalyzerProblemTest
                 Assert.AreEqual("constructor not found.", e.Message);
             }
         }
+        //TC6.1
+        [TestMethod]
+        public void Given_Happy_Message_Using_Reflection_When_Proper_Should_Return_Happy()
+        {
+            //Arrange
+            string message = "HAPPY";
+            string methodName = "AnalyseMood";
+            //Act
+            string actual = MoodAnalyserFactory.InvokeAnalyseMood(message, methodName);
+            //Assert
+            Assert.AreEqual("HAPPY", actual);
+        }
     }
 }
