@@ -176,5 +176,23 @@ namespace MoodAnalyzerProblemTest
             //Assert
             Assert.AreEqual("HAPPY", actual);
         }
+        //TC6.2
+        [TestMethod]
+        public void Given_Improper_Method_Name_Should_Throw_MoodAnalysisException_Indicating_No_Such_Method()
+        {
+            try
+            {
+                //Arrange
+                string message = "HAPPY";
+                string methodName = "WrongMethodName";
+                //Act
+                string actual = MoodAnalyserFactory.InvokeAnalyseMood(message, methodName);
+            }
+            catch (MoodAnalysisException e)
+            {
+                //Assert
+                Assert.AreEqual("no such method.", e.Message);
+            }
+        }
     }
 }
