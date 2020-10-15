@@ -122,7 +122,7 @@ namespace MoodAnalyzerProblemTest
             string constructorName = "MoodAnalyser";
             MoodAnalyser expectedObj = new MoodAnalyser("HAPPY");
             //Act
-            object resultObj = MoodAnalyserFactory.CreateMoodAnalyserObjectUsingParametzisedConstructor(className, constructorName);
+            object resultObj = MoodAnalyserFactory.CreateMoodAnalyserObjectUsingParametzisedConstructor(className, constructorName, "HAPPY");
             //Assert
             expectedObj.Equals(resultObj);
         }
@@ -137,7 +137,7 @@ namespace MoodAnalyzerProblemTest
                 string constructorName = "MoodAnalyser";
                 MoodAnalyser expectedObj = new MoodAnalyser("HAPPY");
                 //Act
-                object resultObj = MoodAnalyserFactory.CreateMoodAnalyserObjectUsingParametzisedConstructor(className, constructorName);
+                object resultObj = MoodAnalyserFactory.CreateMoodAnalyserObjectUsingParametzisedConstructor(className, constructorName, "HAPPY");
             }
             catch (MoodAnalysisException e)
             {
@@ -156,7 +156,7 @@ namespace MoodAnalyzerProblemTest
                 string constructorName = "WrongConstructorName";
                 MoodAnalyser expectedObj = new MoodAnalyser("HAPPY");
                 //Act
-                object resultObj = MoodAnalyserFactory.CreateMoodAnalyserObjectUsingParametzisedConstructor(className, constructorName);
+                object resultObj = MoodAnalyserFactory.CreateMoodAnalyserObjectUsingParametzisedConstructor(className, constructorName,"HAPPY");
             }
             catch (MoodAnalysisException e)
             {

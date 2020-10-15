@@ -30,7 +30,7 @@ namespace MoodAnalyzerProblem
                 throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_METHOD, "constructor not found.");
             }
         }
-        public static object CreateMoodAnalyserObjectUsingParametzisedConstructor(string className, string constructorName)
+        public static object CreateMoodAnalyserObjectUsingParametzisedConstructor(string className, string constructorName, string message)
         {
             Type type = typeof(MoodAnalyser);
             if(type.Name.Equals(className) || type.FullName.Equals(className))
@@ -38,7 +38,7 @@ namespace MoodAnalyzerProblem
                 if (type.Name.Equals(constructorName))
                 {
                     ConstructorInfo ctor = type.GetConstructor(new[] { typeof(string) });
-                    object instance = ctor.Invoke(new object[] {"HAPPY"} );
+                    object instance = ctor.Invoke(new object[] {message} );
                     return instance;
                 }
                 else
@@ -49,6 +49,21 @@ namespace MoodAnalyzerProblem
             else
             {
                 throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_CLASS, "class not found.");
+            }
+        }
+        public static string InvokeAnalyseMood(string message, string methodName)
+        {
+            try
+            {
+                Type type = Type.GetType("MoodAnalyzerProblem.MoodAnalyser");
+                object moodAnalyserObj = MoodAnalyserFactory.CreateMoodAnalyserObjectUsingParametzisedConstructor("MoodAnalyzerProblem.MoodAnalyser", "MoodAnalyser", message);
+                MethodInfo methodInfo = type.GetMethod(methodName);
+                object mood = methodInfo.Invoke(moodAnalyserObj, null);
+                return mood.ToString();
+            }
+            catch (NullReferenceException)
+            {
+                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NO_SUCH_METHOD, "no such method.");
             }
         }
     }
