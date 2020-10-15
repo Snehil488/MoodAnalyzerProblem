@@ -112,5 +112,19 @@ namespace MoodAnalyzerProblemTest
                 Assert.AreEqual("constructor not found.", e.Message);
             }
         }
+        //TC5.1
+        [TestMethod]
+        public void Given_MoodAnalyser_Class_Name_Should_Return_MoodAnalyser_Object_Using_Parametrized_Constructor()
+        {
+
+            //Arrange
+            string className = "MoodAnalyzerProblem.MoodAnalyser";
+            string constructorName = "MoodAnalyser";
+            MoodAnalyser expectedObj = new MoodAnalyser("HAPPY");
+            //Act
+            object resultObj = MoodAnalyserFactory.CreateMoodAnalyserObjectUsingParametzisedConstructor(className, constructorName);
+            //Assert
+            expectedObj.Equals(resultObj);
+        }
     }
 }
