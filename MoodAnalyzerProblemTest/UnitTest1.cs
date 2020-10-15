@@ -126,5 +126,24 @@ namespace MoodAnalyzerProblemTest
             //Assert
             expectedObj.Equals(resultObj);
         }
+        //TC5.2
+        [TestMethod]
+        public void Given_Improper_Class_Name_Should_Throw_MoodAnalysisException_For_Parameterized_Constructor()
+        {
+            try
+            {
+                //Arrange
+                string className = "WrongNameSpace.MoodAnalyser";
+                string constructorName = "MoodAnalyser";
+                MoodAnalyser expectedObj = new MoodAnalyser("HAPPY");
+                //Act
+                object resultObj = MoodAnalyserFactory.CreateMoodAnalyserObjectUsingParametzisedConstructor(className, constructorName);
+            }
+            catch (MoodAnalysisException e)
+            {
+                //Assert
+                Assert.AreEqual("class not found.", e.Message);
+            }
+        }
     }
 }
