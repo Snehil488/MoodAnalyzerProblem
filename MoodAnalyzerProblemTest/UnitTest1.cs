@@ -224,5 +224,23 @@ namespace MoodAnalyzerProblemTest
                 Assert.AreEqual("no such field found.", e.Message);
             }
         }
+        //TC7.3
+        [TestMethod]
+        public void Given_Null_Message_Should_Throw_MoodAnalysisException_Indicating_Null_Message()
+        {
+            try
+            {
+                //Arrange
+                string message = null;
+                string fieldName = "message";
+                //Act
+                string actual = MoodAnalyserFactory.SetField(message, fieldName);
+            }
+            catch (MoodAnalysisException e)
+            {
+                //Assert
+                Assert.AreEqual("message should not be null.", e.Message);
+            }
+        }
     }
 }
