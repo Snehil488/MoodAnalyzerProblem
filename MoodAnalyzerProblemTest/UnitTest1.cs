@@ -194,5 +194,18 @@ namespace MoodAnalyzerProblemTest
                 Assert.AreEqual("no such method.", e.Message);
             }
         }
+
+        //TC7.1
+        [TestMethod]
+        public void Given_Happy_Message_With_Reflection_Should_Return_Happy()
+        {
+            //Arrange
+            string message = "HAPPY";
+            string fieldName = "message";
+            //Act
+            string actual = MoodAnalyserFactory.SetField(message, fieldName);
+            //Assert
+            Assert.AreEqual("HAPPY", actual);
+        }
     }
 }
